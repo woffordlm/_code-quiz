@@ -5,23 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div>
-      <a href="/highscores.html">High Scores</a>    
-    </div>
-    <div id="countdown" class="timer-container">    
-    </div>        
-  </header>
-  <main class="mainClass">
-    <h2 class="questionClass" id="questionId">Code Quiz Challenge</h2>
-    <p class="initialParaClass" id="initialParaClass">They quiz will test your coding knowledge. Try to get as many questions right as possible. IF you get a question time 10 seconds from the timer so think hard!</p>
-    <ul class="answerList" id="answerListId"></ul>
-    <button id="starterButton">Start Quiz </button>   
-  </main>
-
-    <script src="/assets/js/script.js"></script>
+    <header>
+        <div>
+          <a href="/highscores.html">High Scores</a>    
+        </div>
+        <div id="countdown" class="timer-container">    
+        </div>        
+      </header>
+    <main class="page-content" id = "page-content">
+        <section id="prompt-wrapper-id" class="prompt-wrapper">
+          <h2 id="initial-title-id"  class="initial-title" >Coding Quiz</h2>
+          <p class="initial-p" id ="initial-p">They quiz will test your coding knowledge. Try to get as many questions right as possible. IF you get a question time 10 seconds from the timer so think hard!</p>
+          <button id="start-button" class = "start-button">Start</button>
+          <section id="section-id">
+            <h2 class="question-place" id="question-place-id"></h2>
+            <ul id="choice-list"  class="choice-list"></ul>
+           </section>  
+        </section>
+      </main>
+    <script src="script1.js"></script>
 </body>
 </html>
