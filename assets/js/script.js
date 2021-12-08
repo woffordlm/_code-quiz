@@ -83,8 +83,14 @@ function endGame(){
             doneEl.textContent= "Finished"
             var doneParagraphEl = document.createElement("p");
             doneParagraphEl.textContent = "You finished with a score of "+score+" points";
+            var inputEl = document.createElement("input");
+            
+            var buttonEl = document.createElement("button");
+            buttonEl.textContent= "Submit"
             wrappperEl.appendChild(doneEl);
             wrappperEl.appendChild(doneParagraphEl);
+            wrappperEl.appendChild(inputEl);
+            wrappperEl.appendChild(buttonEl);
             timeLeft= 0
         }
     else{
