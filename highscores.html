@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High Scores</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <main>
-        <h2>
+        <h2 class="highscore-title" id="high">
             High Scores
         </h2>
-        <div></div>
-        <button>Go Back</button>
-        <button>Clear High Scores</button>
+        <table class="table" id="table"></table>
+        <br>
+        <a href="index.html">
+        <button class="end-button">Go Back</button>
+        </a>
+        <button class="end-button" id="clear-scores">Clear High Scores</button>
+        
     </main>
+    <script src="./assets/js/highscore.js"></script>
 </body>
 </html>

@@ -7,36 +7,37 @@ var validationEl = document.createElement("div");
 var questionEl = document.getElementById("question-place-id");
 var timeLeft = 60;
 var score = 0
+var scoreLinkEl = document.getElementById("score-link");
 var questions = [
     {
-        title: "The DOM refers to the ___:",
-        choices: ["document", "browser", "window", "local storage"],
-        answer: "document"
+        title: "Which answer displays the proper way to add a class name to an element? ",
+        choices: ["buttonEl.className = 'answer-button'", "buttonEl+className = 'answer-button'", "buttonEl.class = 'answer-button'", "buttonEl.addclassName = 'answer-button'"],
+        answer: "buttonEl.className = 'answer-button'"
     },
     {
-        title: "In order to reference an id in your style sheet you must include what symbol:",
-        choices: ["#", ".", "/", "-"],
-        answer: "#"
+        title: "In order to pull data from local storage, one must do what to the data in order to use it. ",
+        choices: ["use JSON.stringify","use parse", "nothing", "stringify and parse"],
+        answer: "use parse"
     },
     {
-        title: "When linking a style sheet to your index, which is in the same directory, it is important to start the path link with",
-        choices: ["./","/",".../","//"],
-        answer: "/"
+        title: "Javascript provides the skeleton and styling to a webpage. True or False",
+        choices: ["True","False"],
+        answer: "False"
     },
     {
-        title: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
+        title: "How might one access properties from an array of objects?",
+        choices: ["arrayname.properties", "arrayname.getproperties", "A or B", "properties.arrayname"],
+        answer: "arrayname.properties"
     },
     {
-        title: "Which of the following is utilized in order to manipulate the property of an object?",
-        choices: ["a method", "an object", "an <a> tag", "a data attribute"],
-        answer: "a method"
+        title: "Jquery is a library that utilizes which of the following languages?",
+        choices: ["HTML", "CSS", "Javascript", "All answers"],
+        answer: "Javascript"
     }
   ]  ;
+var savedScores= []
 
-
-  function countdown(event) {
+function countdown(event) {
     var timerEl = document.getElementById('countdown');
   
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -54,51 +55,78 @@ var questions = [
         clearInterval(timeInterval);
       }
     }, 1000);
-  }
- 
-    
-
+}
 function callQuestions(){
-    
-        // initially populate question field
+       // initially populate question field
         questionEl.textContent = "";
         var quesEl = questions[questionindex].title;
         questionEl.textContent = quesEl;
          var choiceEl = questions[questionindex].choices;
             for (let i = 0; i< choiceEl.length; i++) {
                 var listed = document.createElement("li");
+                listed.className = "list-item-style"
                 listed.setAttribute("data-choice","1");
                 var buttonEl = document.createElement("button");
-                buttonEl.textContent = choiceEl[i]
+                buttonEl.className = "answer-button";
+                buttonEl.textContent = choiceEl[i];
                 listed.appendChild(buttonEl);
                 choiceList.appendChild(listed); 
             }
-
 }
 function endGame(){
     if(timeLeft===0 || questionindex===5){
             questionEl.innerHTML = "";
             choiceList.innerHTML= "";
             var doneEl = document.createElement("div");
+            doneEl.className = "end-game-title"
             doneEl.textContent= "Finished"
             var doneParagraphEl = document.createElement("p");
+            doneParagraphEl.className = "end-game-paragraph";
             doneParagraphEl.textContent = "You finished with a score of "+score+" points";
             var inputEl = document.createElement("input");
-            
+            inputEl.className = "end-game-input";
+            var endGame = document.getElementById("endgame");
             var buttonEl = document.createElement("button");
+            buttonEl.className = "end-button";
+            var restartEl = document.createElement("button");
+            restartEl.textContent = "Restart";
+            restartEl.className = "end-button";
             buttonEl.textContent= "Submit"
-            wrappperEl.appendChild(doneEl);
-            wrappperEl.appendChild(doneParagraphEl);
-            wrappperEl.appendChild(inputEl);
-            wrappperEl.appendChild(buttonEl);
+            
+            endGame.appendChild(doneEl);
+            endGame.appendChild(doneParagraphEl);
+            endGame.appendChild(inputEl);
+            endGame.appendChild(buttonEl);
+            endGame.appendChild(restartEl);
             timeLeft= 0
-        }
+
+            restartEl.addEventListener("click", function(){
+                questionindex=0
+                timeLeft= 60
+                endGame.innerHTML= ""
+                callQuestions();
+            })
+
+
+            buttonEl.addEventListener("click", function(){
+                // console.log(score);
+                var initials = document.querySelector("input");
+                // console.log(initials.value);
+                var scoreObject = {
+                    score: score,
+                    initials: initials.value
+                }
+                
+                savedScores.push(scoreObject);
+                localStorage.setItem("highscores",JSON.stringify(savedScores));
+               
+            })
+          
+    }
     else{
         callQuestions();
-    }   
-    
+    }      
 }
-
 function validation(event){
             if(event.target.matches("button")){
                     var answerEl= questions[questionindex].answer;
@@ -131,7 +159,7 @@ function validation(event){
                         endGame();
                         },2000)
     
-                // deduct time from timer
+                
             }
           
         } 
@@ -139,9 +167,6 @@ function validation(event){
     
     
 }
-
-
-
 function clearScreen(){
      // remove paragraph
      var paragraph = document.getElementById("initial-p");
@@ -156,8 +181,7 @@ function clearScreen(){
      wrappperEl.removeChild(titleEl);
     //  start timer
     countdown();
-  
-     callQuestions();
+    callQuestions();
  
 }
 
@@ -175,3 +199,4 @@ startButtonEl.addEventListener("click",clearScreen);
 
 
   
+ 

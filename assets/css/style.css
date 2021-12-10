@@ -1,0 +1,100 @@
+.header {
+    width: 100%;
+    text-align: right;
+    margin: 10px;
+    margin-top: 10px;
+    height: 50px;
+    font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.prompt-wrapper{
+    display:flex;
+    flex-direction: column;
+}
+
+.header-timer {
+    background-color: rebeccapurple;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px;
+    text-decoration: none; 
+    font-weight: bold;
+}
+
+.initial-title {
+    text-align: center;
+    font-size: xx-large;
+}
+
+p {
+    width: 75%;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.start-button {
+    margin:auto;
+    display:block;
+    height: 40px;
+    width: 60px;
+    background-color: rebeccapurple ;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+
+}
+hr {
+    width: 50%;
+}
+.timer-container {
+    text-align: center;
+}
+
+.list-item-style {
+    list-style-type: none ;
+}
+
+.end-game-title {
+    text-align: center;
+    font-size: 40px;
+}
+.end-game-paragraph {
+    text-align: center;
+    font-size: 20px;
+}
+.end-game-input, .end-button {
+    margin:auto;
+    display:block;
+}
+.end-button {
+    color: white;
+    background-color: rebeccapurple;
+    margin-top: 30px;
+    margin-bottom:30px ;
+}
+
+.highscore-title {
+    text-align: center;
+}
+.table {
+    margin:auto;
+    display:block;
+    text-align: center;
+}
+.answer-button {
+    background-color: turquoise;
+    margin: 10px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    
+}
+
+.question-place {
+    margin-left: 40px;
+}
