@@ -40,7 +40,7 @@ var questions = [
     }
   ]  ;
 // this array is eventually filled out and then pushed to local storage
-  var savedScores= []
+
 // this function acts as the countdown timer that is triggered by a click event
 function countdown(event) {
     var timerEl = document.getElementById('countdown');
@@ -92,6 +92,7 @@ function endGame(){
         doneParagraphEl.className = "end-game-paragraph";
         doneParagraphEl.textContent = "You finished with a score of "+score+" points";
         var inputEl = document.createElement("input");
+        inputEl.setAttribute("placeholder", "Insert Initials Here");
         inputEl.className = "end-game-input";
         var endGame = document.getElementById("endgame");
         var buttonEl = document.createElement("button");
@@ -100,12 +101,15 @@ function endGame(){
         restartEl.textContent = "Restart";
         restartEl.className = "end-button";
         buttonEl.textContent= "Submit"
-            
+        var aTagEl = document.createElement("a");
+        aTagEl.setAttribute('href','./highscores.html');
+        
         endGame.appendChild(doneEl);
         endGame.appendChild(doneParagraphEl);
         endGame.appendChild(inputEl);
-        endGame.appendChild(buttonEl);
         endGame.appendChild(restartEl);
+        aTagEl.appendChild(buttonEl);
+        endGame.appendChild(aTagEl);
         timeLeft= 0
         // this event listener is linked to a button that triggers a function
         // to reset the game
@@ -113,7 +117,8 @@ function endGame(){
             questionindex=0
             timeLeft= 60
             endGame.innerHTML= ""
-            callQuestions();
+            countdown();
+            callQuestions()
             })
         // This button triggers a function that saves the score and inital to local storage
         buttonEl.addEventListener("click", function(){
@@ -124,7 +129,8 @@ function endGame(){
                 score: score,
                 initials: initials.value
                 }
-                
+            var savedScores=JSON.parse(localStorage.getItem("highscores")) || []
+              
             savedScores.push(scoreObject);
             localStorage.setItem("highscores",JSON.stringify(savedScores));       
             })     
@@ -178,10 +184,10 @@ function clearScreen(){
      var paragraph = document.getElementById("initial-p");
      wrappperEl.removeChild(paragraph);
      
-     // paragraph.remove();
+     // starterButton.remove()
      var starterButton = document.getElementById("start-button");
      wrappperEl.removeChild(starterButton);
-     // starterButton.remove();
+     ;
      // remove initial title
      var titleEl = document.getElementById("initial-title-id");
      wrappperEl.removeChild(titleEl);
