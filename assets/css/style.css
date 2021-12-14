@@ -1,3 +1,5 @@
+/* this section begins the styling for the initial page */
+/* header styling */
 .header {
     width: 100%;
     text-align: right;
@@ -6,12 +8,12 @@
     height: 50px;
     font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
-
+/* this class is for the section that encapulates the initial page */
 .prompt-wrapper{
     display:flex;
     flex-direction: column;
 }
-
+/* this gives styling to the high scores tab */
 .header-timer {
     background-color: rebeccapurple;
     color: white;
@@ -20,13 +22,14 @@
     margin: 30px;
     text-decoration: none; 
     font-weight: bold;
+    align-items: flex-start;
 }
-
+/* this styles the title of the main page */
 .initial-title {
     text-align: center;
     font-size: xx-large;
 }
-
+/* this styles the quiz instructions */
 p {
     width: 75%;
     text-align: center;
@@ -47,17 +50,16 @@ p {
     border-radius: 10px;
 
 }
-hr {
-    width: 50%;
-}
+/* this styles the count down element */
 .timer-container {
-    text-align: center;
+    text-align: left;
+    color:red;
 }
-
+/* this removes the hyperlink decoration */
 .list-item-style {
     list-style-type: none ;
 }
-
+/* this section begins styling to the end game page */
 .end-game-title {
     text-align: center;
     font-size: 40px;
